@@ -121,7 +121,7 @@ object Main {
         col("fields").getItem(2).cast("int").as("browserCode"),
         col("fields").getItem(3).as("browserVer"),
         col("fields").getItem(4).cast("int").as("osCode"),
-        col("fields").getItem(5).as("osVer"),
+        when(col("fields").getItem(5).isNotNull, col("fields").getItem(5)).otherwise(lit("-1")).as("osVer"),
         col("fields").getItem(6).cast("long").as("ip"),
         col("fields").getItem(7).cast("int").as("locId"),
         col("fields").getItem(8).as("domain"),
