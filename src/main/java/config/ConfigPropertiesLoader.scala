@@ -1,6 +1,7 @@
 package config
 
 import config.yaml.ConfigYML
+import org.yaml.snakeyaml.Yaml
 
 import java.io.{FileInputStream, FileNotFoundException, IOException}
 import java.util.Properties
