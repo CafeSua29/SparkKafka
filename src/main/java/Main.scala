@@ -45,8 +45,8 @@ object Main {
 //      StructField("category", StringType, true),
 //      StructField("field24", StringType, true)
 
-      StructField("timeCreate", TimestampType, true),
-      StructField("cookieCreate", TimestampType, true),
+      StructField("timeCreate", StringType, true),
+      StructField("cookieCreate", StringType, true),
       StructField("browserCode", StringType, true),
       StructField("browserVer", StringType, true),
       StructField("osCode", StringType, true),
