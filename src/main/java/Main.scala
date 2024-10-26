@@ -54,19 +54,19 @@ object Main {
   }
 
   // Method to split DataFrame into batches and send to Kafka
-  def splitAndSendToKafka(logData: DataFrame, kafkaTopic: String, kafkaServers: String): Unit = {
-    val batchDFs = logData.randomSplit(Array.fill(logData.count().toInt / 100)(1.0), seed = 123L)
-
-    batchDFs.foreach(df => {
-      df.write
-        .format("kafka")
-        .option("kafka.bootstrap.servers", kafkaServers)
-        .option("topic", kafkaTopic)
-        .save()
-
-      Thread.sleep(10000)  // Wait for 10 seconds
-    })
-  }
+//  def splitAndSendToKafka(logData: DataFrame, kafkaTopic: String, kafkaServers: String): Unit = {
+//    val batchDFs = logData.randomSplit(Array.fill(logData.count().toInt / 100)(1.0), seed = 123L)
+//
+//    batchDFs.foreach(df => {
+//      df.write
+//        .format("kafka")
+//        .option("kafka.bootstrap.servers", kafkaServers)
+//        .option("topic", kafkaTopic)
+//        .save()
+//
+//      Thread.sleep(10000)  // Wait for 10 seconds
+//    })
+//  }
 
   // Method to read from Kafka as streaming DataFrame
 //  def readFromKafka(spark: SparkSession, kafkaServers: String, kafkaTopic: String): DataFrame = {
@@ -237,7 +237,7 @@ object Main {
     logData.show()
 
     // 2. Split DataFrame and Send to Kafka
-    splitAndSendToKafka(logData, kafkaTopic, kafkaServers)
+//    splitAndSendToKafka(logData, kafkaTopic, kafkaServers)
 
     // 3. Spark Streaming: Read from Kafka
 //    val kafkaStream = readFromKafka(spark, kafkaServers, kafkaTopic)
