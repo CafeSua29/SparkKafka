@@ -84,7 +84,9 @@ object Main {
     val batchDFs = logData.randomSplit(Array.fill(logData.count().toInt / 100)(1.0), seed = 123L)
 
     batchDFs.foreach(df => {
-      df.write
+      val kafkaDF = df.withColumn("value", col("guid").cast("string"))
+
+      kafkaDF.selectExpr("CAST(value AS STRING)").write
         .format("kafka")
         .option("kafka.bootstrap.servers", kafkaServers)
         .option("topic", kafkaTopic)
